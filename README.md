@@ -1,1 +1,2 @@
-# alura-viagens
+# Alura Viagens
+## Aplicativo de reserva de viagens
