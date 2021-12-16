@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.montfel.aluraviagens.R;
@@ -22,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         setTitle(getString(R.string.pacotes));
 
         configuraRecyclerView();
+        Intent intent = new Intent(this, ResumoPacoteActivity.class);
+        startActivity(intent);
+
     }
 
     private void configuraRecyclerView() {
