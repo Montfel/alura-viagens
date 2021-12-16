@@ -1,8 +1,10 @@
 package com.montfel.aluraviagens.ui.activity;
 
-import androidx.annotation.NonNull;
+import static com.montfel.aluraviagens.util.PacoteActivityConstantes.CHAVE_PACOTE;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.Button;
@@ -16,15 +18,11 @@ import com.montfel.aluraviagens.util.DiasUtil;
 import com.montfel.aluraviagens.util.MoedaUtil;
 import com.montfel.aluraviagens.util.ResourceUtil;
 
-import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 public class ResumoPacoteActivity extends AppCompatActivity {
 
     private TextView local, dias, preco, data;
     private ImageView imagem;
-    private Button realizarPagamento;
+    private Button realizaPagamento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +30,37 @@ public class ResumoPacoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_resumo_pacote);
         setTitle("Resumo do pacote");
 
-        Pacote pacoteSaoPaulo = new Pacote("São Paulo", "sao_paulo_sp", 2,
-                new BigDecimal("243.99"));
+        carregaPacoteRecebido();
+    }
 
-        mostraLocal(pacoteSaoPaulo);
-        mostraImagem(pacoteSaoPaulo);
-        mostraDias(pacoteSaoPaulo);
-        mostraPreco(pacoteSaoPaulo);
-        mostraData(pacoteSaoPaulo);
+    private void carregaPacoteRecebido() {
+        Intent intent = getIntent();
+        if (intent.hasExtra(CHAVE_PACOTE)) {
+            Pacote pacote = (Pacote) intent.getSerializableExtra(CHAVE_PACOTE);
+            incializaCampos(pacote);
+            configuraBotao(pacote);
+        }
+    }
+
+    private void configuraBotao(Pacote pacote) {
+        realizaPagamento = findViewById(R.id.resumo_pacote_botao_realiza_pagamento);
+        realizaPagamento.setOnClickListener(view -> {
+            vaiParaPagamento(pacote);
+        });
+    }
+
+    private void vaiParaPagamento(Pacote pacote) {
+        Intent intentProxTela = new Intent(ResumoPacoteActivity.this, PagamentoActivity.class);
+        intentProxTela.putExtra(CHAVE_PACOTE, pacote);
+        startActivity(intentProxTela);
+    }
+
+    private void incializaCampos(Pacote pacote) {
+        mostraLocal(pacote);
+        mostraImagem(pacote);
+        mostraDias(pacote);
+        mostraPreco(pacote);
+        mostraData(pacote);
     }
 
     private void mostraData(Pacote pacote) {

@@ -7,4 +7,18 @@
     <string name="preco_final">Preço final</string>
     <string name="realizar_pagamento">REALIZAR PAGAMENTO</string>
     <string name="imagem_do_pacote">imagem do pacote</string>
+    <string name="mascara_nome_cartao">abcdefghijklmnopqrstuvwxyzçABCDEFGHIJKLMNOPQRSTUVWXYZÇ\ </string>
+    <string name="valor_da_compra">Valor da compra:</string>
+    <string name="finalizar_compra">FINALIZAR COMPRA</string>
+    <string name="mm">MM</string>
+    <string name="cvc">CVC</string>
+    <string name="aa">AA</string>
+    <string name="nome_do_cartao">Nome do cartão</string>
+    <string name="informacoes">Digite as informações do cartão de crédito que você deseja usar para o pagamento</string>
+    <string name="numero_do_cartao">Número do cartão</string>
+    <string name="parabens">Parabéns!</string>
+    <string name="compra_realizada_com_sucesso">Compra realizada com sucesso :)</string>
+    <string name="confira_o_resumo_da_compra">Confira o resumo da compra:</string>
+    <string name="banner">banner</string>
+    <string name="imagem_pacote">imagem pacote</string>
 </resources>
